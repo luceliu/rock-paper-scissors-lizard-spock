@@ -1,8 +1,9 @@
-import React from "react";
 import { Choice } from "../types/gameplay";
 import OptionButton from "./OptionButton";
+import { useGame } from "../contexts/GameContext";
 
 const Options: React.FC = () => {
+  const { gameState, makeChoice } = useGame();
   const choices: Choice[] = ["rock", "paper", "scissors", "lizard", "spock"];
 
   return (
@@ -11,10 +12,8 @@ const Options: React.FC = () => {
         <OptionButton
           key={choice}
           choice={choice}
-          onClick={() => console.log("OptionButton clicked")}
-          selected={true}
-          //   onClick={makeChoice}
-          //   selected={gameState.playerChoice === choice}
+          onClick={makeChoice}
+          selected={gameState.playerChoice === choice}
         />
       ))}
     </div>

@@ -1,17 +1,14 @@
-import * as React from "react";
-import { Result } from "../types/gameplay";
+import { useGame } from "../contexts/GameContext";
 
-interface IGameMenuProps {
-  result: Result;
-}
+const GameMenu: React.FC = () => {
+  const { gameState, resetGame, playNewRound } = useGame();
+  const { result } = gameState;
 
-const GameMenu: React.FunctionComponent<IGameMenuProps> = ({ result }) => {
   return (
     <div className="flex gap-4">
       {result !== null && (
         <button
-          // onClick={resetGame}
-          onClick={() => console.log("Play again")}
+          onClick={playNewRound}
           className="bg-indigo-600 hover:bg-indigo-700 text-white font-medium py-2 px-4 rounded-lg shadow transition-colors"
         >
           Play Again
@@ -19,8 +16,7 @@ const GameMenu: React.FunctionComponent<IGameMenuProps> = ({ result }) => {
       )}
 
       <button
-        //   onClick={resetScores}
-        onClick={() => console.log("Reset Scores")}
+        onClick={resetGame}
         className="bg-gray-200 hover:bg-gray-300 text-gray-800 font-medium py-2 px-4 rounded-lg shadow transition-colors"
       >
         Reset Scores

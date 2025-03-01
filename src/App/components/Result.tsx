@@ -1,13 +1,17 @@
-import React from "react";
-import { Choice } from "../types/gameplay";
+import { useGame } from "../contexts/GameContext";
+import { getResultText } from "../utils/gameLogic";
 
-const Result: React.FC<{ playerChoice: Choice; computerChoice: Choice }> = ({
-  playerChoice = "scissors",
-  computerChoice = "paper",
-}) => {
+const Result: React.FC = () => {
+  const { gameState } = useGame();
+  const { result, playerChoice, computerChoice } = gameState;
+
+  if (result === null) return null;
+
+  const resultText = getResultText(result, playerChoice, computerChoice);
+
   return (
     <div>
-      <h2>You lose!</h2>
+      <h2>{resultText}</h2>
 
       {playerChoice && computerChoice && (
         <div className="choices-display">

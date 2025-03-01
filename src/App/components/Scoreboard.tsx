@@ -1,12 +1,11 @@
-import React from "react";
+import { useGame } from "../contexts/GameContext";
 
-const Scoreboard: React.FC<{
-  playerScore: number;
-  computerScore: number;
-}> = ({ playerScore = 5, computerScore = 2 }) => {
+const Scoreboard: React.FC = () => {
+  const { gameState } = useGame();
+  const { playerScore, computerScore } = gameState;
+
   return (
     <div className="flex justify-center w-full max-w-md mb-6">
-      {/* <div className="scores"> */}
       <div className="bg-white shadow-md rounded-lg p-4 flex-1 mx-2 text-center">
         <h3 className="text-sm text-gray-600">You</h3>
         <p className="text-3xl font-bold text-indigo-600">{playerScore}</p>
@@ -17,7 +16,6 @@ const Scoreboard: React.FC<{
           {computerScore}
         </div>
       </div>
-      {/* </div> */}
     </div>
   );
 };
