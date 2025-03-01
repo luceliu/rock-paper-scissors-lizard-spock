@@ -1,6 +1,7 @@
 import { Choice, Result } from "../types/gameplay";
 
-const choices: Choice[] = ["rock", "paper", "scissors", "lizard", "spock"];
+// const choices: Choice[] = ["rock", "paper", "scissors", "lizard", "spock"];
+const choices = Object.values(Choice);
 
 // Generate computer choice
 export const getComputerChoice = (): Choice => {
@@ -14,24 +15,26 @@ export const determineWinner = (
   computerChoice: Choice
 ): Result => {
   if (playerChoice === computerChoice) {
-    return "tie";
+    return Result.Tie;
   }
 
   // Define winning conditions for each choice
   const winConditions: Record<Choice, Choice[]> = {
-    scissors: ["paper", "lizard"],
-    paper: ["rock", "spock"],
-    rock: ["scissors", "lizard"],
-    lizard: ["paper", "spock"],
-    spock: ["scissors", "rock"],
+    [Choice.Scissors]: [Choice.Paper, Choice.Lizard],
+    [Choice.Paper]: [Choice.Rock, Choice.Spock],
+    [Choice.Rock]: [Choice.Scissors, Choice.Lizard],
+    [Choice.Lizard]: [Choice.Paper, Choice.Spock],
+    [Choice.Spock]: [Choice.Scissors, Choice.Rock],
   };
 
-  return winConditions[playerChoice].includes(computerChoice) ? "win" : "lose";
+  return winConditions[playerChoice].includes(computerChoice)
+    ? Result.Win
+    : Result.Lose;
 };
 
 // Get descriptive text for the result
 export const getResultText = (
-  result: Result,
+  result: Result | null,
   playerChoice: Choice | null,
   computerChoice: Choice | null
 ): string => {

@@ -1,5 +1,19 @@
-export type Choice = "rock" | "paper" | "scissors" | "lizard" | "spock";
-export type Result = "win" | "lose" | "tie";
+// export type Choice = "rock" | "paper" | "scissors" | "lizard" | "spock";
+// export type Result = "win" | "lose" | "tie";
+
+export enum Choice {
+  Rock = "rock",
+  Paper = "paper",
+  Scissors = "scissors",
+  Lizard = "lizard",
+  Spock = "spock",
+}
+
+export enum Result {
+  Win = "win",
+  Lose = "lose",
+  Tie = "tie",
+}
 
 export interface GameState {
   playerChoice: Choice | null;

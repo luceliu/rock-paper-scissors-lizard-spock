@@ -4,7 +4,8 @@ import { useGame } from "../contexts/GameContext";
 
 const Options: React.FC = () => {
   const { gameState, makeChoice } = useGame();
-  const choices: Choice[] = ["rock", "paper", "scissors", "lizard", "spock"];
+  // const choices: Choice[] = ["rock", "paper", "scissors", "lizard", "spock"];
+  const choices = Object.values(Choice);
 
   return (
     <div className="options-container">

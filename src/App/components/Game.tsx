@@ -7,7 +7,7 @@ import { GameProvider } from "../contexts/GameContext";
 const Game: React.FC = () => {
   return (
     <GameProvider>
-      <div className="flex flex-col items-center justify-center min-h-screen bg-gradient-to-b from-blue-50 to-indigo-100 p-4">
+      <div className="flex flex-col items-center justify-center min-h-screen p-4 gap-6">
         <h1 className="text-3xl font-bold text-center mb-2 text-indigo-800">
           Rock Paper Scissors Lizard Spock
         </h1>

@@ -5,8 +5,6 @@ const Result: React.FC = () => {
   const { gameState } = useGame();
   const { result, playerChoice, computerChoice } = gameState;
 
-  if (result === null) return null;
-
   const resultText = getResultText(result, playerChoice, computerChoice);
 
   return (
