@@ -21,10 +21,12 @@ export interface GameState {
   result: Result | null;
   playerScore: number;
   computerScore: number;
+  username: string;
   history: RoundSummary[];
 }
 
 export interface RoundSummary {
+  username: string;
   playerChoice: Choice;
   computerChoice: Choice;
   result: Result;

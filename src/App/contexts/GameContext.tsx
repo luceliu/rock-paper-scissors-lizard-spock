@@ -7,6 +7,7 @@ interface GameContextProps {
   makeChoice: (choice: Choice) => void;
   resetGame: () => void;
   playNewRound: () => void;
+  setUsername: (newUsername: string) => void;
 }
 
 const initialState: GameState = {
@@ -15,6 +16,7 @@ const initialState: GameState = {
   result: null,
   playerScore: 0,
   computerScore: 0,
+  username: "",
   history: [],
 };
 
@@ -34,11 +36,13 @@ export const GameProvider: React.FC<{ children: ReactNode }> = ({
       const playerScore = prevState.playerScore + (result === "win" ? 1 : 0);
       const computerScore =
         prevState.computerScore + (result === "lose" ? 1 : 0);
+      const username = prevState.username;
 
       // Add to history if there's a valid result
       const history = [...prevState.history];
       if (result !== null) {
         history.push({
+          username,
           playerChoice: choice,
           computerChoice,
           result,
@@ -46,11 +50,13 @@ export const GameProvider: React.FC<{ children: ReactNode }> = ({
       }
 
       return {
+        ...prevState,
         playerChoice: choice,
         computerChoice,
         result,
         playerScore,
         computerScore,
+        // username,
         history,
       };
     });
@@ -71,9 +77,18 @@ export const GameProvider: React.FC<{ children: ReactNode }> = ({
     });
   };
 
+  const setUsername = (newUsername: string) => {
+    setGameState((prevState) => {
+      return {
+        ...prevState,
+        username: newUsername,
+      };
+    });
+  };
+
   return (
     <GameContext.Provider
-      value={{ gameState, makeChoice, resetGame, playNewRound }}
+      value={{ gameState, makeChoice, resetGame, playNewRound, setUsername }}
     >
       {children}
     </GameContext.Provider>
