@@ -1,32 +1,33 @@
-// export type Choice = "rock" | "paper" | "scissors" | "lizard" | "spock";
-// export type Result = "win" | "lose" | "tie";
-
 export enum Choice {
-  Rock = "rock",
-  Paper = "paper",
-  Scissors = "scissors",
-  Lizard = "lizard",
-  Spock = "spock",
+  Rock = "Rock",
+  Paper = "Paper",
+  Scissors = "Scissors",
+  Lizard = "Lizard",
+  Spock = "Spock",
 }
 
 export enum Result {
-  Win = "win",
-  Lose = "lose",
-  Tie = "tie",
+  Win = "Win",
+  Lose = "Lose",
+  Tie = "Tie",
 }
 
 export interface GameState {
+  // current round
   playerChoice: Choice | null;
   computerChoice: Choice | null;
   result: Result | null;
+  // session stats
   playerScore: number;
   computerScore: number;
-  username: string;
   history: RoundSummary[];
+
+  // settings - if necessary, this can be pulled out into a new SettingsState
+  username: string;
 }
 
 export interface RoundSummary {
-  username: string;
+  username: string; // associate a round with the username you played it with
   playerChoice: Choice;
   computerChoice: Choice;
   result: Result;

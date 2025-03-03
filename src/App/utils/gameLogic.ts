@@ -1,6 +1,5 @@
 import { Choice, Result } from "../types/gameplay";
 
-// const choices: Choice[] = ["rock", "paper", "scissors", "lizard", "spock"];
 const choices = Object.values(Choice);
 
 // Generate computer choice
@@ -43,11 +42,11 @@ export const getResultText = (
   }
 
   switch (result) {
-    case "win":
+    case Result.Win:
       return `You win! ${playerChoice} beats ${computerChoice}`;
-    case "lose":
+    case Result.Lose:
       return `You lose! ${computerChoice} beats ${playerChoice}`;
-    case "tie":
+    case Result.Tie:
       return `It's a tie! Both chose ${playerChoice}`;
     default:
       return "";

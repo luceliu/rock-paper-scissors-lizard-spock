@@ -5,7 +5,7 @@ import {
   useEffect,
   ReactNode,
 } from "react";
-import { Choice, GameState } from "../types/gameplay";
+import { Choice, GameState, Result } from "../types/gameplay";
 import { determineWinner, getComputerChoice } from "../utils/gameLogic";
 
 interface GameContextProps {
@@ -67,9 +67,10 @@ export const GameProvider: React.FC<{ children: ReactNode }> = ({
 
     setGameState((prevState) => {
       // Calculate new scores
-      const playerScore = prevState.playerScore + (result === "win" ? 1 : 0);
+      const playerScore =
+        prevState.playerScore + (result === Result.Win ? 1 : 0);
       const computerScore =
-        prevState.computerScore + (result === "lose" ? 1 : 0);
+        prevState.computerScore + (result === Result.Lose ? 1 : 0);
       const username = prevState.username;
 
       // Add to history if there's a valid result
