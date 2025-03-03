@@ -1,4 +1,10 @@
-import { createContext, useContext, useState, ReactNode } from "react";
+import {
+  createContext,
+  useContext,
+  useState,
+  useEffect,
+  ReactNode,
+} from "react";
 import { Choice, GameState } from "../types/gameplay";
 import { determineWinner, getComputerChoice } from "../utils/gameLogic";
 
@@ -20,12 +26,40 @@ const initialState: GameState = {
   history: [],
 };
 
+// Storage key for localStorage
+const STORAGE_KEY = "rock-paper-scissors-lizard-spock-game-state";
+
+const loadGameState = (): GameState => {
+  try {
+    const savedState = localStorage.getItem(STORAGE_KEY);
+    if (savedState) {
+      return JSON.parse(savedState);
+    }
+  } catch (error) {
+    console.error("Failed to load game state from localStorage:", error);
+  }
+  return initialState;
+};
+
+const saveGameState = (state: GameState): void => {
+  try {
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
+  } catch (error) {
+    console.error("Failed to save game state to localStorage:", error);
+  }
+};
+
 const GameContext = createContext<GameContextProps | undefined>(undefined);
 
 export const GameProvider: React.FC<{ children: ReactNode }> = ({
   children,
 }) => {
-  const [gameState, setGameState] = useState<GameState>(initialState);
+  // Load initial state from localStorage or use the default initialState
+  const [gameState, setGameState] = useState<GameState>(loadGameState);
+
+  useEffect(() => {
+    saveGameState(gameState);
+  }, [gameState]); // save gameState whenever it changes to localStorage
 
   const makeChoice = (choice: Choice) => {
     const computerChoice = getComputerChoice();
@@ -64,6 +98,7 @@ export const GameProvider: React.FC<{ children: ReactNode }> = ({
 
   const resetGame = () => {
     setGameState(initialState);
+    localStorage.removeItem(STORAGE_KEY);
   };
 
   const playNewRound = () => {
