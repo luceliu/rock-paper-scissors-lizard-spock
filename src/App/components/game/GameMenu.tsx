@@ -1,6 +1,6 @@
-import { useGame } from "../contexts/GameContext";
-import useModal from "../hooks/useModal";
-import SettingsModal from "./SettingsModal";
+import { useGame } from "../../contexts/GameContext";
+import useModal from "../../hooks/useModal";
+import SettingsModal from "../modals/SettingsModal";
 
 const GameMenu: React.FC = () => {
   const { gameState, playNewRound } = useGame();

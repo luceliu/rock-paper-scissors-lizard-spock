@@ -1,4 +1,4 @@
-import { useGame } from "../contexts/GameContext";
+import { useGame } from "../../contexts/GameContext";
 
 const Scoreboard: React.FC = () => {
   const { gameState } = useGame();

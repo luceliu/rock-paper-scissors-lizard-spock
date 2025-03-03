@@ -1,6 +1,6 @@
-import { Choice } from "../types/gameplay";
+import { useGame } from "../../contexts/GameContext";
+import { Choice } from "../../types/gameplay";
 import OptionButton from "./OptionButton";
-import { useGame } from "../contexts/GameContext";
 
 const Options: React.FC = () => {
   const { gameState, makeChoice } = useGame();

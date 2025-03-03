@@ -1,5 +1,5 @@
-import { ChoiceEmoji } from "../constants/choices";
-import { Choice } from "../types/gameplay";
+import { ChoiceEmoji } from "../../constants/choices";
+import { Choice } from "../../types/gameplay";
 
 interface OptionButtonProps {
   choice: Choice;

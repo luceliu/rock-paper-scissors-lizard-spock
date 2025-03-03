@@ -1,8 +1,6 @@
-"use client";
-
 import { useState, useEffect } from "react";
-import Modal from "./Modal";
-import { useGame } from "../contexts/GameContext";
+import Modal from "../common/Modal";
+import { useGame } from "../../contexts/GameContext";
 
 interface ISettingsModalProps {
   isOpen: boolean;

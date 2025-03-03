@@ -1,8 +1,8 @@
+import { GameProvider } from "../../contexts/GameContext";
+import GameMenu from "./GameMenu";
 import Options from "./Options";
 import Result from "./Result";
 import Scoreboard from "./Scoreboard";
-import GameMenu from "./GameMenu";
-import { GameProvider } from "../contexts/GameContext";
 
 const Game: React.FC = () => {
   return (

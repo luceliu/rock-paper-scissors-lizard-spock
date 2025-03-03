@@ -1,7 +1,7 @@
-import { useGame } from "../contexts/GameContext";
-import { getResultText } from "../utils/gameLogic";
-import { Result as ResultType } from "../types/gameplay";
-import { ChoiceEmoji } from "../constants/choices";
+import { useGame } from "../../contexts/GameContext";
+import { getResultText } from "../../utils/gameLogic";
+import { Result as ResultType } from "../../types/gameplay";
+import { ChoiceEmoji } from "../../constants/choices";
 
 const Result: React.FC = () => {
   const { gameState } = useGame();
