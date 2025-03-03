@@ -61,13 +61,13 @@ const SettingsModal: React.FunctionComponent<ISettingsModalProps> = ({
         <div className="flex justify-between pt-4">
           <button
             onClick={handleResetGame}
-            className="px-4 py-2 bg-red-500 text-white rounded hover:bg-red-600 focus:outline-none focus:ring-2 focus:ring-red-500"
+            className="px-4 py-2 bg-red-500 text-white rounded hover:bg-red-600 focus:outline-none focus:ring-2 focus:ring-red-500 cursor-pointer"
           >
             Reset Game
           </button>
           <button
             onClick={handleSaveSettings}
-            className="px-4 py-2 bg-indigo-500 text-white rounded hover:bg-indigo-600 focus:outline-none focus:ring-2 focus:ring-indigo-500"
+            className="px-4 py-2 bg-indigo-500 text-white rounded hover:bg-indigo-600 focus:outline-none focus:ring-2 focus:ring-indigo-500 cursor-pointer"
           >
             Save Settings
           </button>
