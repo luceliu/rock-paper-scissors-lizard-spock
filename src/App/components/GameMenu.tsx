@@ -14,7 +14,7 @@ const GameMenu: React.FC = () => {
         {result !== null && (
           <button
             onClick={playNewRound}
-            className="bg-indigo-600 hover:bg-indigo-700 text-white font-medium py-2 px-4 rounded-lg shadow transition-colors"
+            className="bg-indigo-600 hover:bg-indigo-700 text-white font-medium py-2 px-4 rounded-lg shadow transition-colors cursor-pointer"
           >
             Play Again
           </button>
@@ -22,7 +22,7 @@ const GameMenu: React.FC = () => {
 
         <button
           onClick={openModal}
-          className="bg-gray-200 hover:bg-gray-300 text-gray-800 font-medium py-2 px-4 rounded-lg shadow transition-colors"
+          className="bg-gray-200 hover:bg-gray-300 text-gray-800 font-medium py-2 px-4 rounded-lg shadow transition-colors cursor-pointer"
         >
           Settings
         </button>
